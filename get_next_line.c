@@ -6,7 +6,7 @@
 /*   By: fde-mour <fde-mour@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:07:30 by fde-mour          #+#    #+#             */
-/*   Updated: 2023/05/22 16:30:54 by fde-mour         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:01:48 by fde-mour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ char	*get_next_line(int fd)
 	return (get_line);
 }
 
-int	main(void)
-{
-	int	a = open("test.txt", O_RDONLY);
-	char *x = get_next_line(a);
-	char *y = get_next_line(a);
-	printf("%s\n", x);
-	printf("%s\n", y);
+// int	main(void)
+// {
+// 	int	a = open("test.txt", O_RDONLY);
+// 	char *x = get_next_line(a);
+// 	char *y = get_next_line(a);
+// 	printf("%s\n", x);
+// 	printf("%s\n", y);
 
-	return (0);
-}
+// 	return (0);
+// }
