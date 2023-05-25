@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-mour <fde-mour@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 13:07:30 by fde-mour          #+#    #+#             */
-/*   Updated: 2023/05/25 16:26:29 by fde-mour         ###   ########.fr       */
+/*   Created: 2023/05/25 16:42:41 by fde-mour          #+#    #+#             */
+/*   Updated: 2023/05/25 16:53:59 by fde-mour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_file(char *save_line, int fd)
 {
@@ -93,16 +93,16 @@ char	*ft_recover(char *save_line)
 
 char	*get_next_line(int fd)
 {
-	static char	*save_line;
+	static char	*save_line[1024];
 	char		*get_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (0);
-	save_line = read_file(save_line, fd);
-	if (save_line == NULL)
+	save_line[fd] = read_file(save_line[fd], fd);
+	if (save_line[fd] == NULL)
 		return (NULL);
-	get_line = ft_get_line(save_line);
-	save_line = ft_recover(save_line);
+	get_line = ft_get_line(save_line[fd]);
+	save_line[fd] = ft_recover(save_line[fd]);
 	return (get_line);
 }
 
