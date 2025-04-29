@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-mour <fde-mour@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 13:07:30 by fde-mour          #+#    #+#             */
-/*   Updated: 2023/05/25 16:26:29 by fde-mour         ###   ########.fr       */
+/*   Created: 2025-04-24 18:12:51 by figomes           #+#    #+#             */
+/*   Updated: 2025-04-24 18:12:51 by figomes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,18 @@ char	*get_next_line(int fd)
 		return (NULL);
 	get_line = ft_get_line(save_line);
 	save_line = ft_recover(save_line);
+	printf("%s\n", save_line);
 	return (get_line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int	a = open("test.txt", O_RDONLY);
 	char *x = get_next_line(a);
 	printf("%s\n", x);
+	printf("\n");
+	printf("\n");
+	x = get_next_line(a);
+	printf("%s\n", x);
 	return (0);
 }
-*/

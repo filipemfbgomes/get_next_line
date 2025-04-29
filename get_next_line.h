@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-mour <fde-mour@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 13:39:20 by fde-mour          #+#    #+#             */
-/*   Updated: 2023/05/22 15:26:32 by fde-mour         ###   ########.fr       */
+/*   Created: 2025-04-24 18:12:56 by figomes           #+#    #+#             */
+/*   Updated: 2025-04-24 18:12:56 by figomes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 20
 # endif
 
 char	*get_next_line(int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-mour <fde-mour@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 16:45:58 by fde-mour          #+#    #+#             */
-/*   Updated: 2023/05/25 16:46:38 by fde-mour         ###   ########.fr       */
+/*   Created: 2025-04-24 18:12:43 by figomes           #+#    #+#             */
+/*   Updated: 2025-04-24 18:12:43 by figomes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

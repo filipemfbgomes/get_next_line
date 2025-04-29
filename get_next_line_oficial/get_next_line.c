@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-04-29 14:40:06 by figomes           #+#    #+#             */
+/*   Updated: 2025-04-29 14:40:06 by figomes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+#include <fcntl.h>
+
+char	*get_next_line_helper(char *newline, char *buffer, char *line)
+{
+	if (newline)
+	{
+		ft_strcpy(buffer, newline + 1);
+		*(newline + 1) = '\0';
+	}
+	else
+		buffer[0] = '\0';
+	if (ft_strlen(line) == 0)
+	{
+		free(line);
+		return (NULL);
+	}
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*line;
+	char		*newline;
+	int			count;
+
+	count = 1;
+	newline = NULL;
+	line = ft_strdup(buffer);
+	if (!line)
+		return (NULL);
+	while (!newline && count != 0)
+	{
+		count = read(fd, buffer, BUFFER_SIZE);
+		if (count == -1)
+		{
+			free(line);
+			return (NULL);
+		}
+		buffer[count] = '\0';
+		line = ft_strjoin(line, buffer);
+		newline = ft_strchr(line, '\n');
+	}
+	return (get_next_line_helper(newline, buffer, line));
+}
+
+/*int	main(void)
+{
+	int		x;
+	char	*test;
+	char	*test2;
+
+	x = open("test.txt", O_RDONLY);
+	test = get_next_line(x);
+	printf("%s\n", test);
+	test2 = get_next_line(x);
+	printf("%s\n", test2);
+	free(test);
+	free(test2);
+	return (0);
+}
+*/
