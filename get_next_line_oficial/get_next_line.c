@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
+/*   By: figomes <figomes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-29 14:40:06 by figomes           #+#    #+#             */
-/*   Updated: 2025-04-29 14:40:06 by figomes          ###   ########.fr       */
+/*   Created: 2025/04/29 14:40:06 by figomes           #+#    #+#             */
+/*   Updated: 2025/05/02 15:44:03 by figomes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*get_next_line(int fd)
 
 	count = 1;
 	newline = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	line = ft_strdup(buffer);
 	if (!line)
 		return (NULL);
