@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: figomes <figomes@student.42lisboa.com>     +#+  +:+       +#+        */
+/*   By: figomes <figomes@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 14:40:06 by figomes           #+#    #+#             */
-/*   Updated: 2025/05/02 15:44:03 by figomes          ###   ########.fr       */
+/*   Created: 2025-05-05 18:13:37 by figomes           #+#    #+#             */
+/*   Updated: 2025-05-05 18:13:37 by figomes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line_helper(char *newline, char *buffer, char *line)
 {
@@ -31,55 +31,57 @@ char	*get_next_line_helper(char *newline, char *buffer, char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[1024][BUFFER_SIZE + 1];
 	char		*line;
 	char		*newline;
 	int			count;
 
 	count = 1;
 	newline = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
-	line = ft_strdup(buffer);
+	line = ft_strdup(buffer[fd]);
 	if (!line)
 		return (NULL);
 	while (!newline && count != 0)
 	{
-		count = read(fd, buffer, BUFFER_SIZE);
+		count = read(fd, buffer[fd], BUFFER_SIZE);
 		if (count == -1)
 		{
 			free(line);
 			return (NULL);
 		}
-		buffer[count] = '\0';
-		line = ft_strjoin(line, buffer);
+		buffer[fd][count] = '\0';
+		line = ft_strjoin(line, buffer[fd]);
 		newline = ft_strchr(line, '\n');
 	}
-	return (get_next_line_helper(newline, buffer, line));
+	return (get_next_line_helper(newline, buffer[fd], line));
 }
 
 /*int	main(void)
 {
 	int		x;
+	int		y;
+	int		z;
 	char	*test;
 	char	*test2;
 	char	*test3;
-	char	*test4;
 
 	x = open("test.txt", O_RDONLY);
-	printf("%d\n", x);
+	y = open("test2.txt", O_RDONLY);
+	z = open("test3.txt", O_RDONLY);
 	test = get_next_line(x);
 	printf("%s", test);
-	test2 = get_next_line(x);
+	test2 = get_next_line(y);
 	printf("%s", test2);
-	test3 = get_next_line(x);
+	test3 = get_next_line(z);
 	printf("%s", test3);
-	test4 = get_next_line(x);
-	printf("%s", test4);
 	free(test);
 	free(test2);
 	free(test3);
-	free(test4);
+	close(x);
+	close(y);
+	close(z);
 	return (0);
 }
-*/
+ */
