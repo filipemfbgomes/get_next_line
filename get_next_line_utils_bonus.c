@@ -67,3 +67,57 @@ size_t	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+char	*ft_get_line(char *buffer)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	if (buffer[i] == '\0')
+		return (NULL);
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (line == 0)
+		return (NULL);
+	i = 0;
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
+}
+
+char	*ft_recover(char *buffer)
+{
+	int		i;
+	int		j;
+	char	*ptr;
+
+	i = 0;
+	j = 0;
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+		i++;
+	if (buffer[i] == '\0')
+	{
+		free(buffer);
+		return (NULL);
+	}
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
+	if (ptr == 0)
+		return (NULL);
+	i++;
+	while (buffer[i])
+		ptr[j++] = buffer[i++];
+	ptr[j] = '\0';
+	free(buffer);
+	return (ptr);
+}

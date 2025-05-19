@@ -26,5 +26,7 @@ char	*get_next_line(int fd);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *s);
+char	*ft_recover(char *buffer);
+char	*ft_get_line(char *buffer);
 
 #endif
